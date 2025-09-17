@@ -35,6 +35,10 @@ def main():
         else:
             print("Player 2: ", end="")
         print("Which cell to mark? i:[1..3], j:[1..3]: ")
+
+        # check input
+        if i<1 and i>3 :
+            print("input wrong.")
         i, j = map(int, input().split())
         i -= 1
         j -= 1
