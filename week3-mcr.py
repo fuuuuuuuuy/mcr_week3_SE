@@ -36,10 +36,13 @@ def main():
             print("Player 2: ", end="")
         print("Which cell to mark? i:[1..3], j:[1..3]: ")
 
-        # check input
-        if i<1 and i>3 :
-            print("input wrong.")
         i, j = map(int, input().split())
+
+        # check input
+        while i<1 or i>3 or j>3 or j<1:
+            print("input wrong. please input again:")
+            i, j = map(int, input().split())
+            
         i -= 1
         j -= 1
         if not turn:
@@ -47,8 +50,11 @@ def main():
         else:
             game[i][j] = 'O'
         if is_win(game):
-            print("Win!")
-            break  # Terminate the game
+            print("\n最终棋盘:")
+            for row in game:
+                print(" ".join(row))
+            print(f"玩家{(n % 2) + 1}获胜!")
+            break
         if n == 8:  # All cells have been filled
             print("Tie!")
         # Show the game board
